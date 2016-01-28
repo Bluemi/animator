@@ -1,0 +1,16 @@
+Panels:
+
+Panels werden mit F1 F2 und so weiter geöffnet und geschlossen.
+
+Panels:
+	- Console
+	- Object - Verzeichnis
+	- Aktions - Verzeichnis
+
+
+Eigenschaften:
+	- Visible
+	- Focused
+	- KeyStrokes
+	- renderable
+	- Haben einen bestimmten Raum
