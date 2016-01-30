@@ -8,7 +8,6 @@ import misc.StringEdit;
 
 public abstract class Command
 {
-
 	public boolean itsMe(String text)
 	{
 		return text.equals(getName()) || text.startsWith(getName() + " ");

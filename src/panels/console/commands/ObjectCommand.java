@@ -17,6 +17,7 @@ public abstract class ObjectCommand extends Command
 		commands = new LinkedList<ObjectCommand>();
 
 		commands.add(new ExitObject());
+		commands.add(new HelpObject());
 	}
 
 	public static ObjectCommand getCommandByText(String text)
@@ -34,5 +35,5 @@ public abstract class ObjectCommand extends Command
 
 	public abstract void execute(Console console, String[] args, DrawObject handledObject); 
 
-	private static LinkedList<ObjectCommand> getPossibleCommands() { return commands; }
+	public static LinkedList<ObjectCommand> getPossibleCommands() { return commands; }
 }

@@ -1,10 +1,10 @@
-package panels.console.commands.basic;
+package panels.console.commands.global;
 
 import panels.console.Console;
-import panels.console.commands.BasicCommand;
+import panels.console.commands.GlobalCommand;
 import drawobjects.DrawObject;
 
-public class ListObjects extends BasicCommand
+public class ListObjects extends GlobalCommand
 {
 	@Override public String getName() { return "listObjects"; }
 	@Override public void execute(Console console, String[] args)

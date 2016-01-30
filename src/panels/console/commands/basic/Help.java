@@ -1,6 +1,7 @@
 package panels.console.commands.basic;
 
 import panels.console.commands.BasicCommand;
+import panels.console.commands.GlobalCommand;
 import panels.console.Console;
 
 public class Help extends BasicCommand
@@ -12,5 +13,9 @@ public class Help extends BasicCommand
 		{
 			console.write(command.getName());
 		}		
+		for (GlobalCommand gcommand : GlobalCommand.getPossibleCommands())
+		{
+			console.write(gcommand.getName());
+		}
 	}
 }

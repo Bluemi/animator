@@ -68,7 +68,14 @@ public class Console extends Panel
 
 	private void execute(String text)
 	{
+		GlobalCommand globalcommand = GlobalCommand.getCommandByText(text);
+		if (globalcommand != null)
+		{
+			globalcommand.execute(this, Command.getParams(text));
+			return;
+		}
 		boolean commandFound = false;
+
 		switch(getHandleModi())
 		{
 			case 0:

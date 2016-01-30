@@ -19,10 +19,6 @@ public abstract class BasicCommand extends Command
 		commands.add(new Exit());
 		commands.add(new HandleCam());
 		commands.add(new Help());
-		commands.add(new ListObjects());
-		commands.add(new ListCams());
-		commands.add(new Reset());
-		commands.add(new SetFont());
 		commands.add(new PickObject());
 	}
 
