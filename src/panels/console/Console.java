@@ -123,15 +123,8 @@ public class Console extends Panel
 	}
 
 	// setter
-	public void setHandledCam(Cam cam)
-	{
-		handledCam = cam;
-	}
-
-	public void setHandledObject(DrawObject drawObject)
-	{
-		handledDrawObject = drawObject;
-	}
+	public void setHandledCam(Cam cam) { handledCam = cam; }
+	public void handleObject(DrawObject drawObject) { handledDrawObject = drawObject; }
 
 	// getter
 	private int getHandleModi()

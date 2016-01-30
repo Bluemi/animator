@@ -23,6 +23,7 @@ public abstract class BasicCommand extends Command
 		commands.add(new ListCams());
 		commands.add(new Reset());
 		commands.add(new SetFont());
+		commands.add(new PickObject());
 	}
 
 	public static BasicCommand getCommandByText(String text)

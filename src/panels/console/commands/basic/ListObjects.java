@@ -14,9 +14,9 @@ public class ListObjects extends BasicCommand
 			console.write("No Objects found");
 		}
 
-		for (DrawObject drawObject : console.getAnimator().getDrawObjects())
+		for (int i = 0; i < console.getAnimator().getDrawObjects().size(); i++)
 		{
-			console.write(drawObject.getName());
+			console.write("     " + i + " - " + console.getAnimator().getDrawObjects().get(i).getName());
 		}
 	}
 }

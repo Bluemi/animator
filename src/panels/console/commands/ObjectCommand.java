@@ -15,6 +15,8 @@ public abstract class ObjectCommand extends Command
 	{
 		// Hier werden alle commands angegeben
 		commands = new LinkedList<ObjectCommand>();
+
+		commands.add(new ExitObject());
 	}
 
 	public static ObjectCommand getCommandByText(String text)
