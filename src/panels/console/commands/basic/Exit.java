@@ -1,9 +1,9 @@
-package panels.console.commands;
+package panels.console.commands.basic;
 
-import panels.console.Command;
+import panels.console.commands.BasicCommand;
 import panels.console.Console;
 
-public class Exit extends Command
+public class Exit extends BasicCommand
 {
 	@Override public String getName() { return "exit"; }
 	@Override public void execute(Console console, String[] args)

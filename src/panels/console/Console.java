@@ -7,7 +7,7 @@ import core.Animator;
 import drawobjects.DrawObject;
 import misc.Debug;
 import panels.Panel;
-import panels.console.Command;
+import panels.console.commands.*;
 import view.Cam;
 
 public class Console extends Panel
@@ -66,21 +66,48 @@ public class Console extends Panel
 
 	private void execute(String text)
 	{
-		Command command = Command.getCommandByText(text);
-		if (command != null)
+		boolean commandFound = false;
+		switch(getHandleModi())
 		{
-			command.execute(this, Command.getParams(text));
+			case 0:
+			{
+				BasicCommand basiccommand = BasicCommand.getCommandByText(text);
+				if (basiccommand != null)
+				{
+					basiccommand.execute(this, Command.getParams(text));
+					commandFound = true;
+				}
+				break;
+			}
+			case 1: // Cam handled
+			{
+				CamCommand camcommand = CamCommand.getCommandByText(text);
+				if (camcommand != null)
+				{
+					camcommand.execute(this, Command.getParams(text), getHandledCam());
+					commandFound = true;
+				}
+				break;
+			}
+			case 2: // Object handled
+			{
+				ObjectCommand objectcommand = ObjectCommand.getCommandByText(text);
+				if (objectcommand != null)
+				{
+					objectcommand.execute(this, Command.getParams(text), getHandledObject());
+					commandFound = true;
+				}
+				break;
+			}
 		}
-		else
+
+		// Fehlermeldung printen : Command not found
+		if (!commandFound)
 		{
-			if (text.indexOf(" ")  == -1) // Position von Space
-			{
+			if (text.indexOf(" ")  == -1) // Wenn es kein Space gibt in dieser Zeile
 				write("command \"" + text + "\" not found!");
-			}
 			else
-			{
 				write("command \"" + text.substring(0, text.indexOf(" ")) + "\" not found!");
-			}
 		}
 	}
 
@@ -95,7 +122,7 @@ public class Console extends Panel
 		getText().add("");
 	}
 
-	// Setter
+	// setter
 	public void setHandledCam(Cam cam)
 	{
 		handledCam = cam;
@@ -106,9 +133,22 @@ public class Console extends Panel
 		handledDrawObject = drawObject;
 	}
 
-	// Getter
+	// getter
+	private int getHandleModi()
+	{
+		if (getHandledCam() != null)
+		{
+			return 1; // eine cam wird gehandelt
+		}
+		if (getHandledObject() != null)
+		{
+			return 2; // Ein Object wird gehandelt
+		}
+		return 0; // nichts ist gehandelt
+	}
 	public Animator getAnimator() { return animator; } // Damit die Commands auf den Animator zugreifen können
 	@Override protected boolean isTopAligned() { return false; }
 	private String getWriteableLine() { return getText().get(0); }
 	public Cam getHandledCam() { return handledCam; }
+	public DrawObject getHandledObject() { return handledDrawObject; }
 }

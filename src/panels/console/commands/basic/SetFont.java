@@ -1,11 +1,11 @@
-package panels.console.commands;
+package panels.console.commands.basic;
 
 import java.awt.Font;
 
 import panels.console.Console;
-import panels.console.Command;
+import panels.console.commands.BasicCommand;
 
-public class SetFont extends Command
+public class SetFont extends BasicCommand
 {
 	@Override public String getName() { return "setfont"; }
 	@Override public void execute(Console console, String[] args)

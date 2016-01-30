@@ -1,9 +1,9 @@
-package panels.console.commands;
+package panels.console.commands.basic;
 
 import panels.console.Console;
-import panels.console.Command;
+import panels.console.commands.BasicCommand;
 
-public class HandleCam extends Command
+public class HandleCam extends BasicCommand
 {
 	@Override public String getName() { return "handleCam"; }
 	@Override public void execute(Console console, String[] args)

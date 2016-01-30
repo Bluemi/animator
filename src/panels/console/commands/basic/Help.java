@@ -1,15 +1,14 @@
-package panels.console.commands;
+package panels.console.commands.basic;
 
-import panels.console.Command;
+import panels.console.commands.BasicCommand;
 import panels.console.Console;
-import panels.console.Command;
 
-public class Help extends Command
+public class Help extends BasicCommand
 {
 	@Override public String getName() { return "help"; }
 	@Override public void execute(Console console, String[] args)
 	{
-		for (Command command : Command.getCommands())
+		for (BasicCommand command : BasicCommand.getPossibleCommands())
 		{
 			console.write(command.getName());
 		}		

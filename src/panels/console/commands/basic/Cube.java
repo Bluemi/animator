@@ -1,12 +1,12 @@
-package panels.console.commands;
+package panels.console.commands.basic;
 
 import misc.math.Vec3D;
 import misc.Debug;
 import drawobjects.containers.DrawCube;
 import panels.console.Console;
-import panels.console.Command;
+import panels.console.commands.BasicCommand;
 
-public class Cube extends Command
+public class Cube extends BasicCommand
 {
 	@Override public void execute(Console console, String[] args)
 	{
