@@ -15,9 +15,10 @@ import misc.math.Angle;
 
 public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 {
-	public static final float ACCELERATION = (float)0.8;
-	public static final float FRICTION = (float)11; // 10 is no friction
-	public static final float ROTATION_SPEED = (float)0.1;
+	public static final float ACCELERATION = 0.8f;
+	public static final float SHIFTACCELERATION = 3.4f;
+	public static final float FRICTION = 11.f; // 10 is no friction
+	public static final float ROTATION_SPEED = 0.1f;
 
 	private Vec3D position;
 	private Vec3D directionFront;
@@ -55,9 +56,19 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		Vec3D vecFront = getDirectionFront();
 		Vec3D vecLeft = getDirectionLeft();
 		Vec3D vecTop = getDirectionTop();
-		vecFront.scalWith(ACCELERATION/10);
-		vecLeft.scalWith(ACCELERATION/10);
-		vecTop.scalWith(ACCELERATION/10);
+
+		if (shiftPressed)
+		{
+			vecFront.scalWith(SHIFTACCELERATION/10);
+			vecLeft.scalWith(SHIFTACCELERATION/10);
+			vecTop.scalWith(SHIFTACCELERATION/10);
+		}
+		else
+		{
+			vecFront.scalWith(ACCELERATION/10);
+			vecLeft.scalWith(ACCELERATION/10);
+			vecTop.scalWith(ACCELERATION/10);
+		}
 
 		if (wPressed)
 		{
