@@ -28,6 +28,7 @@ public final class DrawCube extends Polygon
 		Vec3D aim = new Vec3D(position);
 		aim.addWith(size); // Vektor der die Position angibt, die sich aus position + size ergibt
 
+/*
 		for (int i = 0; i < getPoints().size(); i++)
 		{
 			if (getPoints().get(i) == null)
@@ -35,6 +36,7 @@ public final class DrawCube extends Polygon
 				Debug.warn("Cube.definePoints(): getPoints().get(" + i + ") == null; Maybe not created before");
 			}
 		}
+*/
 
 		// Punkte hinzufügen
 		// Ebene 1

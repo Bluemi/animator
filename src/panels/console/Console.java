@@ -12,6 +12,8 @@ import view.Cam;
 
 public class Console extends Panel
 {
+	public static final String VOID_PRETEXT = "$ ";
+
 	private Cam handledCam;
 	private DrawObject handledDrawObject;
 	private String preText; // Text, der in der Commandozeile steht und NICHT bearbeitet werden kann
@@ -22,7 +24,7 @@ public class Console extends Panel
 	public Console(Animator animator)
 	{
 		this.animator = animator;
-		preText = "$ ";
+		preText = VOID_PRETEXT;
 		commandLine = "";
 		getText().addFirst("");
 		updateLine();
@@ -123,8 +125,26 @@ public class Console extends Panel
 	}
 
 	// setter
-	public void setHandledCam(Cam cam) { handledCam = cam; }
-	public void handleObject(DrawObject drawObject) { handledDrawObject = drawObject; }
+	public void setHandledCam(Cam cam)
+	{
+		handledCam = cam;
+		if (handledCam == null)
+		{
+			preText = VOID_PRETEXT;
+		}
+		else
+		{
+			preText = cam.getName() + VOID_PRETEXT;
+		}
+	}
+	public void handleObject(DrawObject drawObject)
+	{
+		handledDrawObject = drawObject;
+		if (handledDrawObject == null)
+			preText = VOID_PRETEXT;
+		else
+			preText = handledDrawObject.getName() + VOID_PRETEXT;
+	}
 
 	// getter
 	private int getHandleModi()
