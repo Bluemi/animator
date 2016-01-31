@@ -3,6 +3,7 @@ package panels.console.commands;
 import java.util.LinkedList;
 
 import drawobjects.DrawObject;
+import misc.Debug;
 import panels.console.Command;
 import panels.console.commands.object.*;
 import panels.console.Console;
@@ -18,6 +19,8 @@ public abstract class ObjectCommand extends Command
 
 		commands.add(new ExitObject());
 		commands.add(new HelpObject());
+		commands.add(new ChangeObjectVisibility());
+		commands.add(new ChangePosition());
 	}
 
 	public static ObjectCommand getCommandByText(String text)

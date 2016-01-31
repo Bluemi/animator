@@ -47,5 +47,13 @@ public abstract class Polygon extends Container
 		getComponents().add(new DrawLine(name, point1, point2));
 	}
 
+	@Override public void changePosition(Vec3D diff)
+	{
+		for (Vec3D point : getPoints())
+		{
+			point.addWith(diff);
+		}
+	}
+
 	protected LinkedList<Vec3D> getPoints() { return points; }
 }

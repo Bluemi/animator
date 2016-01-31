@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import drawobjects.DrawObject;
 import misc.Debug;
+import misc.math.Vec3D;
 import view.Cam;
 
 public abstract class Container extends DrawObject
@@ -30,9 +31,12 @@ public abstract class Container extends DrawObject
 
 	@Override public void render(Cam cam)
 	{
-		for (DrawObject component : getComponents())
+		if (getVisible())
 		{
-			component.render(cam);
+			for (DrawObject component : getComponents())
+			{
+				component.render(cam);
+			}
 		}
 	}
 
@@ -40,5 +44,13 @@ public abstract class Container extends DrawObject
 	{
 		Debug.warnIf(components == null, "DrawObjectContainer.getComponents(): components == null; return null");
 		return components;
+	}
+
+	@Override public void changePosition(Vec3D diff)
+	{
+		for (DrawObject component : getComponents())
+		{
+			component.changePosition(diff);
+		}
 	}
 }

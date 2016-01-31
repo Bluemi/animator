@@ -21,9 +21,18 @@ public class DrawLine extends DrawObject
 
 	@Override public void render(Cam cam)
 	{
-		Point pointA = from3Dto2D(point1, cam);
-		Point pointB = from3Dto2D(point2, cam);
-		Screen.g().setColor(Color.WHITE);
-		Screen.g().drawLine(pointA.getX(), pointA.getY(), pointB.getX(), pointB.getY());
+		if (getVisible())
+		{
+			Point pointA = from3Dto2D(point1, cam);
+			Point pointB = from3Dto2D(point2, cam);
+			Screen.g().setColor(Color.WHITE);
+			Screen.g().drawLine(pointA.getX(), pointA.getY(), pointB.getX(), pointB.getY());
+		}
+	}
+
+	@Override public void changePosition(Vec3D diff)
+	{
+		point1.addWith(diff);
+		point2.addWith(diff);
 	}
 }

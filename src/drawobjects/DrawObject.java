@@ -17,13 +17,14 @@ import misc.Debug;
 public abstract class DrawObject implements Nameable
 {
 	private String name;
-
 	private Vec3D speed;
+	private boolean visible;
 
 	protected DrawObject(String name)
 	{
 		this.name = name;
 		speed = getStartSpeed();
+		setVisible(getDefaultVisible());
 	}
 
 	public abstract void render(Cam cam);
@@ -80,5 +81,14 @@ public abstract class DrawObject implements Nameable
 		point.setY((int) (((-Screen.HEIGHT)/(2*cam.getViewingRange().getY())) * gamma + (Screen.HEIGHT/2)));
 		return point;
 	}
+
+	public abstract void changePosition(Vec3D diff);
+
+	// getter
 	@Override public String getName() { return name; }
+	public boolean getDefaultVisible() { return true; }
+	public boolean getVisible() { return visible; }
+
+	// setter
+	public void setVisible(boolean v) { visible = v; }
 }

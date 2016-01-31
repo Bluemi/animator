@@ -24,7 +24,15 @@ public class DrawPoint extends DrawObject
 
 	@Override public void render(Cam cam)
 	{
-		Point point = from3Dto2D(position, cam);
-		Screen.g().drawImage(image, point.getX(), point.getY(), null);
+		if (getVisible())
+		{
+			Point point = from3Dto2D(position, cam);
+			Screen.g().drawImage(image, point.getX(), point.getY(), null);
+		}
+	}
+
+	@Override public void changePosition(Vec3D diff)
+	{
+		position.addWith(diff);
 	}
 }
