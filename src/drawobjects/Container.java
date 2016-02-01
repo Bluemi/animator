@@ -20,6 +20,7 @@ public abstract class Container extends DrawObject
 
 	@Override public void tick()
 	{
+		super.tick();
 		for (int i = 0; i < getComponents().size(); i++)
 		{
 			getComponents().get(i).tick();

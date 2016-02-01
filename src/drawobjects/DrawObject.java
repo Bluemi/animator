@@ -18,19 +18,32 @@ public abstract class DrawObject implements Nameable
 {
 	private String name;
 	private Vec3D speed;
+	private Vec3D drag;
 	private boolean visible;
 
 	protected DrawObject(String name)
 	{
+		Debug.note("New Object with name " + name + " created");
 		this.name = name;
-		speed = getStartSpeed();
+		speed = new Vec3D(); // Da in setSpeed 'speed.copy' aufgerufen wird, muss erstmal das Object erstellt werden
+		drag = new Vec3D(); // Dito
+		setSpeed(getStartSpeed());
+		setDrag(getStartDrag());
 		setVisible(getDefaultVisible());
 	}
 
 	public abstract void render(Cam cam);
-	protected Vec3D getStartSpeed() { return new Vec3D(); } // Kann von den Unterklassen geändert werden
 
-	public void tick() {}
+	public void tick()
+	{
+		applyDrag();
+		changePosition(getSpeed());
+	}
+
+	protected void applyDrag()
+	{
+		getSpeed().scalWith(getDrag());
+	}
 
 	protected Point from3Dto2D(Vec3D drawPoint, Cam cam)
 	{
@@ -88,7 +101,21 @@ public abstract class DrawObject implements Nameable
 	@Override public String getName() { return name; }
 	public boolean getDefaultVisible() { return true; }
 	public boolean getVisible() { return visible; }
+	public Vec3D getSpeed() { return speed; }
+	protected Vec3D getStartSpeed() { return new Vec3D(); } // Kann von den Unterklassen geändert werden
+	protected Vec3D getStartDrag() { return new Vec3D(0.9, 0.9, 0.9); }
+	protected Vec3D getDrag() { return drag; }
 
 	// setter
 	public void setVisible(boolean v) { visible = v; }
+	public void setSpeed(Vec3D s)
+	{
+		Debug.warnIf(s == null, "DrawObject.setSpeed(): s == null");
+		speed.copy(s);
+	}
+	public void setDrag(Vec3D d)
+	{
+		Debug.warnIf(d == null, "DrawObject.setDrag(): d == null");
+		drag.copy(d);
+	}
 }

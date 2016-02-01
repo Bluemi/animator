@@ -23,13 +23,12 @@ public abstract class Polygon extends Container
 
 	protected void addLine(int index1, int index2)
 	{
-
 		addLine(getPoints().get(index1), getPoints().get(index2));
 	}
 
 	protected void addLine(Vec3D point1, Vec3D point2)
 	{
-		addLine("line" + getPoints().size(), point1, point2);
+		addLine("line" + getComponents().size(), point1, point2);
 	}
 
 	protected void addLine(String name, Vec3D point1, Vec3D point2)

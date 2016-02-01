@@ -187,6 +187,13 @@ public class Vec3D
 		setZ(getZ() * k);
 	}
 
+	public void scalWith(Vec3D vec)
+	{
+		setX(getX() * vec.getX());
+		setY(getY() * vec.getY());
+		setZ(getZ() * vec.getZ());
+	}
+
 	public void multiplyWith(Vec3D vec)
 	{
 		setX(getX() * vec.getX());
