@@ -17,6 +17,7 @@ public abstract class GlobalCommand extends Command
 		commands.add(new ListCams());
 		commands.add(new Reset());
 		commands.add(new SetFont());
+		commands.add(new SetBackgroundColor());
 	}
 
 	public static GlobalCommand getCommandByText(String text)

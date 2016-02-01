@@ -26,6 +26,7 @@ public class Screen extends Canvas
 {
 	public static final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(); // bildschirmbreite
 	public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(); // bildschirmhöhe
+	public static Color BackgroundColor = new Color(7, 14, 14);
 
 	private static JFrame frame; // fenster
 	private static Screen instance; // singleton-instanz
@@ -52,9 +53,7 @@ public class Screen extends Canvas
 		setCursor(blankCursor);
 
 		frame.setUndecorated(true);
-		frame.setResizable(false); // -> fenstergröße ist variabel (fullscreen ist möglich)
-		//frame.setVisible(true); // -> fenster ist sichtbar
-		requestFocusInWindow();  // das fenster wird fokusiert
+		frame.setResizable(false);
 
 		// Fullscreen
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -65,10 +64,8 @@ public class Screen extends Canvas
 			//frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 			d.setFullScreenWindow(frame);
 		}
-		else
-		{
-		}
 		frame.setVisible(true);
+		requestFocusInWindow();  // das fenster wird fokusiert
 	}
 
 	// called by Main.render() in a fixed rate
@@ -81,8 +78,8 @@ public class Screen extends Canvas
 			return; // und beende die render funktion
 		} // falls wir nun eine bufferstrategy haben
 		g = bs.getDrawGraphics(); // setze g auf deren graphics
-		g.setColor(Color.BLACK); // setze farbe auf schwarz
-		g.fillRect(0, 0, WIDTH, HEIGHT); // fülle den bildschirm schwarz
+		g.setColor(BackgroundColor); // setze farbe
+		g.fillRect(0, 0, WIDTH, HEIGHT); // fülle den bildschirm
 		animator.render();
 		g.dispose(); // dispose die graphics
 		bs.show(); // flip den buffer
@@ -102,4 +99,8 @@ public class Screen extends Canvas
 	public static Graphics g() { return g; } // returnt die graphics, gebraucht zum rendern
 	public static Screen get() { return instance; } // returnt die singleton-instance
 	public static Size getScreenSize() { return new Size(WIDTH, HEIGHT); } // returnt die fenstergröße (= bildschirmgröße)
+	public static void setBackgroundColor(Color color)
+	{
+		BackgroundColor = color;
+	}
 }

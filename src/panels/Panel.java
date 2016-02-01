@@ -25,15 +25,9 @@ public abstract class Panel implements KeyPressListener
 		// Image
 		image = new BufferedImage(WIDTH, Screen.HEIGHT, BufferedImage.TYPE_INT_ARGB);
 		g = image.createGraphics();
+		g.setColor(new Color(0,0,0,250));
+		g.fillRect(0, 0, WIDTH, Screen.HEIGHT);
 		int i = 0;
-		while (i < Screen.HEIGHT)
-		{
-			g.setColor(new Color(5,5,5,250));
-			g.fillRect(0, i, WIDTH, TEXT_HEIGHT);
-			g.setColor(new Color(7,7,7,250));
-			g.fillRect(0, i+TEXT_HEIGHT, WIDTH, TEXT_HEIGHT);
-			i += TEXT_HEIGHT * 2;
-		}
 		g.setColor(Color.WHITE);
 		g.drawLine(WIDTH, 0, WIDTH, Screen.HEIGHT);
 
