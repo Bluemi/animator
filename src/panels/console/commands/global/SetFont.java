@@ -12,16 +12,13 @@ public class SetFont extends GlobalCommand
 	{
 		String usage = "usage: setfont [FontType]";
 
-		for (int i = 0; i < args.length; i++)
-		{
-		}
 		if (args.length != 1)
 		{
 			console.write(usage);
 		}
 		else
 		{
-			Console.FONT = new Font(args[0], Font.BOLD, Console.TEXT_HEIGHT-2);
+			Console.FONT = new Font(args[0], Font.PLAIN, Console.TEXT_HEIGHT-2);
 		}
 	}
 }

@@ -13,12 +13,13 @@ import panels.console.Console;
 
 public abstract class Panel implements KeyPressListener
 {
-	public static Font FONT = new Font("Ubuntu", Font.PLAIN, Console.TEXT_HEIGHT-2);
+	public static Font FONT = new Font("Ubuntu", Font.BOLD, Console.TEXT_HEIGHT);
+	public static final int COMPENSATION = 28;
 	public static final int WIDTH = 350;
 	private static BufferedImage image;
 	private static Graphics g;
 	private LinkedList<String> text;
-	public static final int TEXT_HEIGHT = 16; // Gibt an wie weit die Zeilen auseinander sind
+	public static final int TEXT_HEIGHT = 14; // Gibt an wie weit die Zeilen auseinander sind
 
 	public Panel()
 	{
@@ -54,7 +55,7 @@ public abstract class Panel implements KeyPressListener
 		{
 			for (int i = 0; i < getText().size(); i++)
 			{
-				Screen.g().drawString(getText().get(i), 4, (Screen.HEIGHT - TEXT_HEIGHT * 2) - (i * TEXT_HEIGHT));
+				Screen.g().drawString(getText().get(i), 4, (Screen.HEIGHT - COMPENSATION) - (i * TEXT_HEIGHT));
 			}
 		}
 	}

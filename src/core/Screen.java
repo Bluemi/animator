@@ -26,7 +26,7 @@ public class Screen extends Canvas
 {
 	public static final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(); // bildschirmbreite
 	public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(); // bildschirmhöhe
-	public static Color BackgroundColor = new Color(7, 14, 14);
+	public static Color backgroundColor = new Color(7, 14, 14);
 
 	private static JFrame frame; // fenster
 	private static Screen instance; // singleton-instanz
@@ -78,7 +78,7 @@ public class Screen extends Canvas
 			return; // und beende die render funktion
 		} // falls wir nun eine bufferstrategy haben
 		g = bs.getDrawGraphics(); // setze g auf deren graphics
-		g.setColor(BackgroundColor); // setze farbe
+		g.setColor(backgroundColor); // setze farbe
 		g.fillRect(0, 0, WIDTH, HEIGHT); // fülle den bildschirm
 		animator.render();
 		g.dispose(); // dispose die graphics
@@ -101,6 +101,6 @@ public class Screen extends Canvas
 	public static Size getScreenSize() { return new Size(WIDTH, HEIGHT); } // returnt die fenstergröße (= bildschirmgröße)
 	public static void setBackgroundColor(Color color)
 	{
-		BackgroundColor = color;
+		backgroundColor = color;
 	}
 }
