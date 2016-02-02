@@ -10,37 +10,47 @@ public class Cube extends BasicCommand
 {
 	@Override public void execute(Console console, String[] args)
 	{
-		if (args.length < 1)
+		Vec3D position = new Vec3D();
+		Vec3D size = new Vec3D();
+		String name = "";
+
+		if (args.length == 1)
+		{
+			if (args[0].equals("-n"))
+			{
+				size = new Vec3D(1, 1, 1);
+				name = "cube";
+			}
+		}
+		else if (args.length == 7)
+		{
+			position = new Vec3D(Float.parseFloat(args[1]), Float.parseFloat(args[2]), Float.parseFloat(args[3]));
+			size = new Vec3D(Float.parseFloat(args[4]), Float.parseFloat(args[5]), Float.parseFloat(args[6]));
+			name = args[0];
+		}
+		else
 		{
 			printUsage(console);
 			return;
 		}
 
-		if (args.length == 7)
+		// Erstellen
+		DrawCube cube = new DrawCube(name, position, size);
+		console.getAnimator().getDrawObjects().add(cube);
+		console.endl();
+		for (String s : cube.getDescription())
 		{
-			Vec3D position = new Vec3D(Float.parseFloat(args[1]), Float.parseFloat(args[2]), Float.parseFloat(args[3]));
-			Vec3D size = new Vec3D(Float.parseFloat(args[4]), Float.parseFloat(args[5]), Float.parseFloat(args[6]));
-
-			DrawCube cube = new DrawCube(args[0], position, size);
-			console.getAnimator().getDrawObjects().add(cube);
-			console.endl();
-			for (String s : cube.getDescription())
-			{
-				console.write(s);
-			}
-			console.endl();
+			console.write(s);
 		}
-		else
-		{
-			printUsage(console);
-		}
+		console.endl();
 	}
 	@Override public String getName() { return "cube"; }
 	private void printUsage(Console console)
 	{
 		console.endl();
 		console.write("Usage");
-		console.write(TAB + getName() + " <Name> <X> <Y> <Z> <XSize> <ySize> <ZSize>");
+		console.write(TAB + getName() + " <Name> <X> <Y> <Z> <XSize> <YSize> <ZSize>");
+		console.write(TAB + getName() + " -n");
 		console.endl();
 	}
 }
