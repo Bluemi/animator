@@ -9,7 +9,9 @@ public class ExitObject extends ObjectCommand
 	@Override public void execute(Console console, String[] args, DrawObject object)
 	{
 		console.handleObject(null);
-		console.write("Doesn't handle \"" + object.getName() + "\" anymore");
+		console.endl();
+		console.write(TAB + "Doesn't handle \"" + object.getName() + "\" anymore");
+		console.endl();
 	}
 
 	@Override public String getName() { return "exit"; }

@@ -21,7 +21,9 @@ public class CreateDrawPoint extends BasicCommand
 	@Override public String getName() { return "point"; }
 	private void printUsage(Console console)
 	{
+		console.endl();
 		console.write("Usage");
-		console.write("     " + getName() + " <Name> <X> <Y> <Z>");
+		console.write(TAB + getName() + " <Name> <X> <Y> <Z>");
+		console.endl();
 	}
 }

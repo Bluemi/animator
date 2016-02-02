@@ -12,18 +12,22 @@ public class ChangePosition extends ObjectCommand
 		if (args.length == 3)
 		{
 			Vec3D diff = new Vec3D(Float.parseFloat(args[0]), Float.parseFloat(args[1]), Float.parseFloat(args[2]));
-			console.write(diff + "");
 			object.changePosition(diff);
+			console.endl();
+			console.write(TAB + "Object \"" + object.getName() + "\" moved " + diff);
+			console.endl();
 		}
 		else
 		{
 			printUsage(console);
 		}
 	}
-	@Override public String getName() { return "changePosition";}
+	@Override public String getName() { return "move";}
 	private void printUsage(Console console)
 	{
+		console.endl();
 		console.write("Usage:");
-		console.write("      " + getName() + " <X> <Y> <Z>");
+		console.write(TAB + getName() + " <X> <Y> <Z>");
+		console.endl();
 	}
 }

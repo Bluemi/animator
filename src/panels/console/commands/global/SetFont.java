@@ -10,15 +10,20 @@ public class SetFont extends GlobalCommand
 	@Override public String getName() { return "setfont"; }
 	@Override public void execute(Console console, String[] args)
 	{
-		String usage = "usage: setfont [FontType]";
-
 		if (args.length != 1)
 		{
-			console.write(usage);
+			printUsage(console);
 		}
 		else
 		{
-			Console.FONT = new Font(args[0], Font.PLAIN, Console.TEXT_HEIGHT-2);
+			Console.FONT = new Font(args[0], Font.PLAIN, Console.TEXT_HEIGHT);
 		}
+	}
+	private void printUsage(Console console)
+	{
+		console.endl();
+		console.write("Usage");
+		console.write(TAB + getName() + " <FontType>");
+		console.endl();
 	}
 }

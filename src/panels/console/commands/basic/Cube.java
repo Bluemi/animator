@@ -10,10 +10,9 @@ public class Cube extends BasicCommand
 {
 	@Override public void execute(Console console, String[] args)
 	{
-		String usage = getName() + " [name] [x] [y] [z] [xSize] [ySize] [zSize]";
 		if (args.length < 1)
 		{
-			console.write(usage);
+			printUsage(console);
 			return;
 		}
 
@@ -22,15 +21,26 @@ public class Cube extends BasicCommand
 			Vec3D position = new Vec3D(Float.parseFloat(args[1]), Float.parseFloat(args[2]), Float.parseFloat(args[3]));
 			Vec3D size = new Vec3D(Float.parseFloat(args[4]), Float.parseFloat(args[5]), Float.parseFloat(args[6]));
 
-			console.getAnimator().getDrawObjects().add(new DrawCube(args[0], position, size));
-
-			console.write("[Cube] " + getName() + " : Position " + position + " | Size " + size);
+			DrawCube cube = new DrawCube(args[0], position, size);
+			console.getAnimator().getDrawObjects().add(cube);
+			console.endl();
+			for (String s : cube.getDescription())
+			{
+				console.write(s);
+			}
+			console.endl();
 		}
 		else
 		{
-			console.write(usage);
+			printUsage(console);
 		}
 	}
-
 	@Override public String getName() { return "cube"; }
+	private void printUsage(Console console)
+	{
+		console.endl();
+		console.write("Usage");
+		console.write(TAB + getName() + " <Name> <X> <Y> <Z> <XSize> <ySize> <ZSize>");
+		console.endl();
+	}
 }

@@ -33,7 +33,7 @@ public class PickObject extends BasicCommand
 	private void printUsage(Console console)
 	{
 		console.write("usage");
-		console.write("       pickobject <name>");
+		console.write(TAB + " pickobject <name>");
 		// console.write("       pickobject <id>"); // noch nicht umgesetzt
 	}
 

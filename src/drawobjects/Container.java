@@ -55,5 +55,5 @@ public abstract class Container extends DrawObject
 		}
 	}
 
-	@Override public String[] getDescription() { return new String[] {"(Container) : \t" + getName(), components.size() + " Components"}; }
+	@Override public String[] getDescription() { return new String[] { "     " + getName() + " (Container):", "     Has " + components.size() + " Components"}; }
 }

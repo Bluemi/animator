@@ -30,7 +30,7 @@ public class PickCam extends BasicCommand
 	private void printUsage(Console console)
 	{
 		console.write("Usage");
-		console.write("     " + getName() + " <name>");
+		console.write(TAB + getName() + " <name>");
 	}
 
 	@Override public String getName() { return "pickCam"; }

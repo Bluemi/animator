@@ -13,7 +13,7 @@ import panels.console.Console;
 
 public abstract class Panel implements KeyPressListener
 {
-	public static Font FONT = new Font("Ubuntu", Font.BOLD, Console.TEXT_HEIGHT);
+	public static Font FONT = new Font("Ubuntu", Font.PLAIN, Console.TEXT_HEIGHT);
 	public static final int COMPENSATION = 28;
 	public static final int WIDTH = 350;
 	private static BufferedImage image;

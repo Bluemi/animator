@@ -113,16 +113,24 @@ public class Console extends Panel
 		// Fehlermeldung printen : Command not found
 		if (!commandFound)
 		{
-			if (text.indexOf(" ")  == -1) // Wenn es kein Space gibt in dieser Zeile
-				write("command \"" + text + "\" not found!");
-			else
-				write("command \"" + text.substring(0, text.indexOf(" ")) + "\" not found!");
+			if (!text.equals(""))
+			{
+				if (text.indexOf(" ")  == -1) // Wenn es kein Space gibt in dieser Zeile
+					write(Command.TAB + "command \"" + text + "\" not found!");
+				else
+					write(Command.TAB + "command \"" + text.substring(0, text.indexOf(" ")) + "\" not found!");
+			}
 		}
 	}
 
 	public void write(String text)
 	{
 		getText().add(1, text); // 1 ist die Stelle an der dieser Text eingefügt wird
+	}
+
+	public void endl()
+	{
+		write("");
 	}
 
 	public void reset()

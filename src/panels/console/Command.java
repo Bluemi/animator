@@ -8,6 +8,8 @@ import misc.StringEdit;
 
 public abstract class Command
 {
+	public static final String TAB = "       ";
+
 	public boolean itsMe(String text)
 	{
 		return text.equals(getName()) || text.startsWith(getName() + " ");

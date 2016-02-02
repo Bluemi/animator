@@ -9,9 +9,12 @@ public class ListCams extends GlobalCommand
 	@Override public String getName() { return "listCams"; }
 	@Override public void execute(Console console, String[] args)
 	{
+		console.endl();
+		console.write("ListCams:");
 		for (Cam cam : console.getAnimator().getCams())
 		{
-			console.write(cam.getName());
+			console.write(TAB + cam.getName());
 		}
+		console.endl();
 	}
 }

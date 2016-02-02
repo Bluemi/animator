@@ -13,6 +13,9 @@ public class SetObjectSpeed extends ObjectCommand
 		{
 			Vec3D vec = new Vec3D(Float.parseFloat(args[0]), Float.parseFloat(args[1]), Float.parseFloat(args[2]));
 			object.setSpeed(vec);
+			console.endl();
+			console.write(TAB + "Speed of \"" + object.getName() + " set to " + vec);
+			console.endl();
 		}
 		else
 		{
@@ -22,7 +25,9 @@ public class SetObjectSpeed extends ObjectCommand
 	@Override public String getName() { return "setSpeed"; }
 	private void printUsage(Console console)
 	{
+		console.endl();
 		console.write("Usage");
-		console.write("     " + getName() + " <X> <Y< <Z>");
+		console.write(TAB + getName() + " <X> <Y< <Z>");
+		console.endl();
 	}
 }
