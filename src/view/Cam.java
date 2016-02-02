@@ -25,10 +25,10 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	private Vec3D directionLeft;
 	private Vec3D directionTop;
 	private Vec3D speed;
-	private Vec3D focusPoint;
+	private Vec3D PointOfFocus;
 	private String name;
 
-	private boolean wPressed, aPressed, sPressed, dPressed, shiftPressed, spacePressed, strgPressed;
+	private boolean wPressed, aPressed, sPressed, dPressed, shiftPressed, spacePressed, strgPressed, ePressed;
 
 	// constructor
 	public Cam(String name)
@@ -46,7 +46,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		defineDirectionLeft();
 		defineDirectionTop();
 		speed = new Vec3D();
-		focusPoint = new Vec3D(0,0,0);
+		PointOfFocus = new Vec3D(0,0,0);
 		wPressed = aPressed = sPressed = dPressed = shiftPressed = spacePressed = strgPressed = false;
 	}
 
@@ -107,6 +107,11 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 
 		speed.scalWith(10/FRICTION);
 		position.addWith(speed);
+
+		if (ePressed)
+		{
+			focusPoint(PointOfFocus);
+		}
 	}
 
 	@Override public void keyTyped(KeyEvent keyEvent) {}
@@ -126,6 +131,9 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 				break;
 			case KeyEvent.VK_D:
 				dPressed = true;
+				break;
+			case KeyEvent.VK_E:
+				ePressed = true;
 				break;
 			case KeyEvent.VK_SHIFT:
 				shiftPressed = true;
@@ -157,6 +165,9 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 				break;
 			case KeyEvent.VK_D:
 				dPressed = false;
+				break;
+			case KeyEvent.VK_E:
+				ePressed = false;
 				break;
 			case KeyEvent.VK_SHIFT:
 				shiftPressed = false;
@@ -201,6 +212,14 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		}
 	}
 
+	public void focusPoint(Vec3D point)
+	{
+		Vec3D vec = Vec3D.getFromTo(position, point);
+		vec.normalize();
+		directionFront.copy(vec);
+		defineDirectionLeftTop();
+	}
+
 	private void defineDirectionLeftTop()
 	{
 		defineDirectionLeft();
@@ -227,7 +246,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	{
 		if (point != null)
 		{
-			focusPoint.copy(point);
+			PointOfFocus.copy(point);
 		}
 		else
 		{
