@@ -1,4 +1,4 @@
-package drawobjects.drawobjectss;
+package drawobjects.drawobjects;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -34,5 +34,10 @@ public class DrawPoint extends DrawObject
 	@Override public void changePosition(Vec3D diff)
 	{
 		position.addWith(diff);
+	}
+
+	@Override public String[] getDescription()
+	{
+		return new String[] {"(DrawPoint) \t" + getName(), "Position : \t" + position};
 	}
 }

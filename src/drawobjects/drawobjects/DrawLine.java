@@ -35,4 +35,6 @@ public class DrawLine extends DrawObject
 		point1.addWith(diff);
 		point2.addWith(diff);
 	}
+
+	@Override public String[] getDescription() { return new String[] {"(DrawLine) : \t" + getName(), "Position1 :\t" + point1, "Position2 :\t" + point2}; }
 }

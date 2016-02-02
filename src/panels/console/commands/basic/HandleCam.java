@@ -5,7 +5,6 @@ import panels.console.commands.BasicCommand;
 
 public class HandleCam extends BasicCommand
 {
-	@Override public String getName() { return "handleCam"; }
 	@Override public void execute(Console console, String[] args)
 	{
 		String usage = "usage: handleCam [CamName]";
@@ -19,4 +18,5 @@ public class HandleCam extends BasicCommand
 			console.write(usage);
 		}
 	}
+	@Override public String getName() { return "pickcam"; }
 }

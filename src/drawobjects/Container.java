@@ -54,4 +54,6 @@ public abstract class Container extends DrawObject
 			component.changePosition(diff);
 		}
 	}
+
+	@Override public String[] getDescription() { return new String[] {"(Container) : \t" + getName(), components.size() + " Components"}; }
 }

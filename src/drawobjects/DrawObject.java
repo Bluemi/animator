@@ -105,6 +105,7 @@ public abstract class DrawObject implements Nameable
 	protected Vec3D getStartSpeed() { return new Vec3D(); } // Kann von den Unterklassen geändert werden
 	protected Vec3D getStartDrag() { return new Vec3D(0.9, 0.9, 0.9); }
 	protected Vec3D getDrag() { return drag; }
+	public abstract String[] getDescription();
 
 	// setter
 	public void setVisible(boolean v) { visible = v; }

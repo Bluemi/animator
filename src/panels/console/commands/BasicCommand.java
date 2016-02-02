@@ -16,6 +16,7 @@ public abstract class BasicCommand extends Command
 		commands = new LinkedList<BasicCommand>();
 
 		commands.add(new Cube());
+		commands.add(new CreateDrawPoint());
 		commands.add(new Exit());
 		commands.add(new HandleCam());
 		commands.add(new Help());

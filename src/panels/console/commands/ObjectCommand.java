@@ -22,6 +22,7 @@ public abstract class ObjectCommand extends Command
 		commands.add(new ChangeObjectVisibility());
 		commands.add(new ChangePosition());
 		commands.add(new SetObjectSpeed());
+		commands.add(new ShowObjectStats());
 	}
 
 	public static ObjectCommand getCommandByText(String text)

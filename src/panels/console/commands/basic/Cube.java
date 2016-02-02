@@ -10,7 +10,7 @@ public class Cube extends BasicCommand
 {
 	@Override public void execute(Console console, String[] args)
 	{
-		String usage = getName() + " [x] [y] [z] [xSize] [ySize] [zSize]";
+		String usage = getName() + " [name] [x] [y] [z] [xSize] [ySize] [zSize]";
 		if (args.length < 1)
 		{
 			console.write(usage);
