@@ -23,7 +23,6 @@ public abstract class DrawObject implements Nameable
 
 	protected DrawObject(String name)
 	{
-		Debug.note("New Object with name " + name + " created");
 		this.name = name;
 		speed = new Vec3D(); // Da in setSpeed 'speed.copy' aufgerufen wird, muss erstmal das Object erstellt werden
 		drag = new Vec3D(); // Dito
