@@ -38,6 +38,12 @@ public class Point
 		setY(getY() - point.getY());
 	}
 
+	public void subtract(int x, int y)
+	{
+		setX(getX() - x);
+		setY(getY() - y);
+	}
+
 	public Point plus(Point point)
 	{
 		return new Point(getX() + point.getX(), getY() + point.getY());

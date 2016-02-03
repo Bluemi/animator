@@ -36,5 +36,12 @@ public class DrawLine extends DrawObject
 		point2.addWith(diff);
 	}
 
+	@Override public Vec3D getCenter()
+	{
+		Vec3D center = new Vec3D(point1);
+		center.addWith(point2);
+		center.scalWith(0.5);
+		return center;
+	}
 	@Override public String[] getDescription() { return new String[] {"(DrawLine) : \t" + getName(), "Position1 :\t" + point1, "Position2 :\t" + point2}; }
 }

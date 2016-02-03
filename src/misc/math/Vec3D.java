@@ -233,7 +233,7 @@ public class Vec3D
 
 	public double getMagnitude()
 	{
-		return (double) Math.sqrt(x*x + y*y + z*z);
+		return Math.sqrt(x*x + y*y + z*z);
 	}
 
 	public String toString()

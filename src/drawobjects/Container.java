@@ -47,6 +47,17 @@ public abstract class Container extends DrawObject
 		return components;
 	}
 
+	@Override public Vec3D getCenter()
+	{
+		Vec3D center = new Vec3D();
+		for (int i = 0; i < getComponents().size(); i++)
+		{
+			center.addWith(getComponents().get(i).getCenter());
+		}
+		center.scalWith(1/getComponents().size());
+		return center;
+	}
+
 	@Override public void changePosition(Vec3D diff)
 	{
 		for (DrawObject component : getComponents())

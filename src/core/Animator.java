@@ -46,22 +46,22 @@ public class Animator implements MouseMotionListener, KeyListener
 
 	public void tick()
 	{
-		for (DrawObject object : getDrawObjects())
+		for (int i = 0; i < getDrawObjects().size(); i++)
 		{
-			object.tick();
+			getDrawObjects().get(i).tick();
 		}
 
-		for (Cam cam : getCams())
+		for (int j = 0; j < getCams().size(); j++)
 		{
-			cam.tick();
+			getCams().get(j).tick();
 		}
 	}
 
 	public void render()
 	{
-		for (DrawObject object : getDrawObjects())
+		for (int i = 0; i < getDrawObjects().size(); i++)
 		{
-			object.render(activeCam);
+			getDrawObjects().get(i).render(getActiveCam());
 		}
 		if (activePanel != null)
 			activePanel.render();

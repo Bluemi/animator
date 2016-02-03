@@ -12,6 +12,7 @@ import misc.StringEdit;
 import misc.math.Vec3D;
 import misc.math.Angle;
 import misc.math.Point;
+import misc.Randomizer;
 import panels.console.Command;
 
 public class Main

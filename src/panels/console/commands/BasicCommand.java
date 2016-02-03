@@ -17,6 +17,8 @@ public abstract class BasicCommand extends Command
 
 		commands.add(new Cube());
 		commands.add(new CreateDrawPoint());
+		commands.add(new CreateCloud());
+		commands.add(new CreateFountain());
 		commands.add(new Exit());
 		commands.add(new Help());
 		commands.add(new PickObject());

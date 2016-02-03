@@ -60,6 +60,10 @@ public abstract class DrawObject implements Nameable
 		Vec3D camToPDash = Vec3D.getFromTo(cam.getPosition(), PDash);
 
 		double beta = Vec3D.getAngleBetween(camToPDash, cam.getDirectionFront()).getDegrees();
+		if (beta != beta) // LOL, wegen NaN, kein Scheiß
+		{
+			beta = 0;
+		}
 
 		Vec3D hilfsVec = new Vec3D();
 		hilfsVec.copy(drawPoint);
@@ -105,6 +109,7 @@ public abstract class DrawObject implements Nameable
 	protected Vec3D getStartDrag() { return new Vec3D(0.9, 0.9, 0.9); }
 	protected Vec3D getDrag() { return drag; }
 	public abstract String[] getDescription();
+	public abstract Vec3D getCenter();
 
 	// setter
 	public void setVisible(boolean v) { visible = v; }

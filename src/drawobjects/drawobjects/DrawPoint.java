@@ -19,7 +19,7 @@ public class DrawPoint extends DrawObject
 	{
 		super(name);
 		this.position = new Vec3D(position);
-		image = Toolkit.getDefaultToolkit().getImage("res/Pixel.png");
+		image = Toolkit.getDefaultToolkit().getImage("res/drawobjects/Pixel.png");
 	}
 
 	@Override public void render(Cam cam)
@@ -35,6 +35,9 @@ public class DrawPoint extends DrawObject
 	{
 		position.addWith(diff);
 	}
+
+	protected Vec3D getPosition() { return position; }
+	@Override public Vec3D getCenter() { return new Vec3D(getPosition()); }
 
 	@Override public String[] getDescription()
 	{

@@ -13,7 +13,7 @@ import drawobjects.containers.Polygon;
 import misc.math.Vec3D;
 import misc.Debug;
 
-public final class DrawCube extends Polygon
+public class DrawCube extends Polygon
 {
 	public DrawCube(String name, Vec3D position, Vec3D size)
 	{
