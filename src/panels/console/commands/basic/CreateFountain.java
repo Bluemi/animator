@@ -12,7 +12,6 @@ public class CreateFountain extends BasicCommand
 	@Override public void execute(Console console, String[] args)
 	{
 		Vec3D position = new Vec3D();
-		Vec3D size = new Vec3D();
 		String name = "";
 		int interval = 2;
 
@@ -20,14 +19,12 @@ public class CreateFountain extends BasicCommand
 		{
 			if (args[0].equals("-n"))
 			{
-				size = new Vec3D(1, 1, 1);
 				name = "fountain";
 			}
 		}
-		else if (args.length == 8)
+		else if (args.length == 5)
 		{
 			position = new Vec3D(Float.parseFloat(args[1]), Float.parseFloat(args[2]), Float.parseFloat(args[3]));
-			size = new Vec3D(Float.parseFloat(args[4]), Float.parseFloat(args[5]), Float.parseFloat(args[6]));
 			interval = Integer.parseInt(args[7]);
 			name = args[0];
 		}
@@ -38,7 +35,7 @@ public class CreateFountain extends BasicCommand
 		}
 
 		// Erstellen
-		Fountain fountain = new Fountain(name, position, size, interval);
+		Fountain fountain = new Fountain(name, position, interval);
 		console.getAnimator().getDrawObjects().add(fountain);
 		console.endl();
 		for (String s : fountain.getDescription())
