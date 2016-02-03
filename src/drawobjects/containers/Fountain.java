@@ -7,6 +7,7 @@ import misc.Randomizer;
 
 public class Fountain extends DrawCube
 {
+	private static final double SPREAD = 0.3;
 	private int interval, counter;
 
 	public Fountain(String name, Vec3D position, Vec3D size, int interval)
@@ -34,7 +35,7 @@ public class Fountain extends DrawCube
 	private void createCloud()
 	{
 		DrawCloud cloud = new DrawCloud("c" + (getComponents().size() - 12), new Vec3D(getCenter()));
-		cloud.setSpeed(new Vec3D(Randomizer.getDoubleBetween(-0.1, 0.1), Randomizer.getDoubleBetween(-0.1, 0.1), Randomizer.getDoubleBetween(1.0, 1.2)));
+		cloud.setSpeed(new Vec3D(Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(1.0, 1.2)));
 		getComponents().add(cloud);
 	}
 }
