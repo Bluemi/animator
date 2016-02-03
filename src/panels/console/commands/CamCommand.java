@@ -3,7 +3,7 @@ package panels.console.commands;
 import java.util.LinkedList;
 
 import panels.console.Command;
-import panels.console.commands.basic.*;
+import panels.console.commands.cam.*;
 import panels.console.Console;
 import view.Cam;
 
@@ -15,6 +15,10 @@ public abstract class CamCommand extends Command
 	{
 		// Hier werden alle commands angegeben
 		commands = new LinkedList<CamCommand>();
+
+		commands.add(new MoveCam());
+		commands.add(new HelpCam());
+		commands.add(new ExitCam());
 	}
 
 	public static CamCommand getCommandByText(String text)
@@ -32,5 +36,5 @@ public abstract class CamCommand extends Command
 
 	public abstract void execute(Console console, String[] args, Cam handledCam); 
 
-	private static LinkedList<CamCommand> getPossibleCommands() { return commands; }
+	public static LinkedList<CamCommand> getPossibleCommands() { return commands; }
 }
