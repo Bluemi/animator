@@ -241,6 +241,11 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		directionTop.copy(vecTop);
 	}
 
+	public void changePosition(Vec3D vec)
+	{
+		getPosition().addWith(vec);
+	}
+
 	// Setter
 	public void setFocusPoint(Vec3D point)
 	{
