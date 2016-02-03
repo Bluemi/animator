@@ -15,11 +15,15 @@ public class PickCam extends BasicCommand
 				if (cam.getName().equals(args[0]))
 				{
 					console.setHandledCam(cam);
-					console.write("Handle " + cam.getName() + " now");
+					console.endl();
+					console.write(TAB + "Handle " + cam.getName() + " now");
+					console.endl();
 					return;
 				}
 			}
+			console.endl();
 			console.write("Cam \"" + args[0] + "\" not found");
+			console.endl();
 		}
 		else
 		{
@@ -29,8 +33,10 @@ public class PickCam extends BasicCommand
 
 	private void printUsage(Console console)
 	{
+		console.endl();
 		console.write("Usage");
 		console.write(TAB + getName() + " <name>");
+		console.endl();
 	}
 
 	@Override public String getName() { return "pickCam"; }

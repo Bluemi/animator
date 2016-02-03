@@ -19,6 +19,7 @@ public abstract class CamCommand extends Command
 		commands.add(new MoveCam());
 		commands.add(new HelpCam());
 		commands.add(new ExitCam());
+		commands.add(new ShowCamStats());
 	}
 
 	public static CamCommand getCommandByText(String text)

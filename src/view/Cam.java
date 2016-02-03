@@ -243,7 +243,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 
 	public void changePosition(Vec3D vec)
 	{
-		getPosition().addWith(vec);
+		position.addWith(vec);
 	}
 
 	// Setter
@@ -276,4 +276,12 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		return point;
 	}
 	@Override public String getName() { return name; }
+	public String[] getDescription()
+	{
+		return new String[]
+		{
+			getName() + " (Cam)", 
+			"Position : " + getPosition()
+		};
+	}
 }
