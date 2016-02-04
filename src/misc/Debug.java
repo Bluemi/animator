@@ -44,7 +44,8 @@ public class Debug
 	public static enum Tags
 	{
 		CAM_KEYS(false),
-		EXTENDED_WARNINGS(false);
+		EXTENDED_WARNINGS(false),
+		IMAGE_LOADER(true);
 
 		private boolean active;
 
