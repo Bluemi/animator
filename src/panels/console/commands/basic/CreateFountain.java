@@ -24,8 +24,9 @@ public class CreateFountain extends BasicCommand
 		}
 		else if (args.length == 5)
 		{
+			name = args[0];
 			position = new Vec3D(Float.parseFloat(args[1]), Float.parseFloat(args[2]), Float.parseFloat(args[3]));
-			interval = Integer.parseInt(args[7]);
+			interval = Integer.parseInt(args[4]);
 			name = args[0];
 		}
 		else
@@ -49,7 +50,7 @@ public class CreateFountain extends BasicCommand
 	{
 		console.endl();
 		console.write("Usage");
-		console.write(TAB + getName() + " <Name> <X> <Y> <Z> <XSize> <YSize> <ZSize> <Interval>");
+		console.write(TAB + getName() + " <Name> <X> <Y> <Z> <Interval>");
 		console.write(TAB + getName() + " -n");
 		console.endl();
 	}
