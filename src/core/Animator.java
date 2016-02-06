@@ -152,6 +152,19 @@ public class Animator implements MouseMotionListener, KeyListener
 		return null;
 	}
 
+	// returnt DrawObject mit dem übergebenen Namen
+	public DrawObject getObject(String name)
+	{
+		for (DrawObject object : getDrawObjects())
+		{
+			if (object.getName().equals(name))
+			{
+				return object;
+			}
+		}
+		return null;
+	}
+
 	public void setActiveCam(Cam cam)
 	{
 		activeCam = cam;
