@@ -99,6 +99,8 @@ public abstract class DrawObject implements Nameable
 	}
 
 	public abstract void changePosition(Vec3D diff);
+	public void stop(){};
+	public void start(){};
 
 	// getter
 	@Override public String getName() { return name; }

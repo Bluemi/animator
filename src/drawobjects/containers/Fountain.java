@@ -10,6 +10,7 @@ public class Fountain extends Container
 	private static final double SPREAD = 0.3;
 	private int interval, counter;
 	private Vec3D position;
+	private boolean active;
 
 	public Fountain(String name, Vec3D position, int interval)
 	{
@@ -17,21 +18,27 @@ public class Fountain extends Container
 		this.interval = interval;
 		counter = interval;
 		this.position = new Vec3D(position);
+		active = true;
 	}
 
 	@Override public void initComponents() { }
+	@Override public void stop() { active = false; }
+	@Override public void start() { active = true; }
 
 	@Override public void tick()
 	{
 		super.tick();
-		if (counter < 0)
+		if (active)
 		{
-			createCloud();
-			counter = interval;
-		}
-		else
-		{
-			counter--;
+			if (counter < 0)
+			{
+				createCloud();
+				counter = interval;
+			}
+			else
+			{
+				counter--;
+			}
 		}
 	}
 
@@ -40,7 +47,10 @@ public class Fountain extends Container
 		for (int i = 0; i < 10; i++)
 		{
 			DrawCloud cloud = new DrawCloud("c" + getComponents().size(), new Vec3D(position));
-			cloud.setSpeed(new Vec3D(Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(1.0, 1.2)));
+			double x = Randomizer.getDoubleBetween(-SPREAD, SPREAD);
+			double y = Randomizer.getDoubleBetween(-SPREAD, SPREAD);;
+			//cloud.setSpeed(new Vec3D(Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(-SPREAD, SPREAD), Randomizer.getDoubleBetween(1.0, 1.2)));
+			cloud.setSpeed(new Vec3D(x, y, Randomizer.getDoubleBetween(1.0, 1.2)));
 			getComponents().add(cloud);
 		}
 	}
