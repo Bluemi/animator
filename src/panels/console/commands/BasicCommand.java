@@ -23,6 +23,7 @@ public abstract class BasicCommand extends Command
 		commands.add(new Help());
 		commands.add(new PickObject());
 		commands.add(new PickCam());
+		commands.add(new CreateGlobeCreator());
 	}
 
 	public static BasicCommand getCommandByText(String text)
