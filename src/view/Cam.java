@@ -3,6 +3,7 @@ package view;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyListener;
+import java.awt.Color;
 
 import core.Screen;
 import misc.Nameable;
@@ -27,6 +28,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	private Vec3D speed;
 	private Vec3D PointOfFocus;
 	private String name;
+	private Color color;
 
 	private boolean wPressed, aPressed, sPressed, dPressed, shiftPressed, spacePressed, strgPressed, ePressed;
 
@@ -259,12 +261,20 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		}
 	}
 
+	public void setColor(Color c)
+	{
+		color = c;
+	}
+
 	// Getter
 	public Vec3D getPosition() { return new Vec3D(position); }
 	public Vec3D getDirectionFront() { return new Vec3D(directionFront); }
 	public Vec3D getDirectionLeft() { return new Vec3D(directionLeft); }
 	public Vec3D getDirectionTop() { return new Vec3D(directionTop); }
 	public Vec3D getSpeed() { return new Vec3D(speed); }
+
+	public Color getColor() { return color; }
+	public boolean hasColor() { return color != null; }
 
 	public Point getViewingRange()
 	{

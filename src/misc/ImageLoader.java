@@ -3,6 +3,7 @@ package misc;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.awt.Graphics;
 
 import misc.Debug;
 
@@ -49,6 +50,20 @@ public enum ImageLoader
 		}
 		Debug.warnIf(image == null, "ImageLoader.getImage(): image == null");
 		return image;
+	}
+
+	public BufferedImage getImageCopy()
+	{
+		return copyImage(getImage());
+	}
+
+	public static BufferedImage copyImage(BufferedImage source)
+	{
+		BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+		Graphics g = b.getGraphics();
+		g.drawImage(source, 0, 0, null);
+		g.dispose();
+		return b;
 	}
 
 	public boolean isLoaded() { return loaded; }

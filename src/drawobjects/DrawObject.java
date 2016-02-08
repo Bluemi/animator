@@ -6,6 +6,8 @@
 
 package drawobjects;
 
+import java.awt.Color;
+
 import core.Screen;
 import view.Cam;
 import misc.Nameable;
@@ -88,6 +90,15 @@ public abstract class DrawObject implements Nameable
 		}
 
 		return degToKoordinates(beta, gamma, cam);
+	}
+
+	protected Color getRenderColor(Cam cam)
+	{
+		if (cam.hasColor())
+		{
+			return cam.getColor();
+		}
+		return Color.WHITE;
 	}
 
 	private Point degToKoordinates(double beta, double gamma, Cam cam)
