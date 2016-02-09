@@ -66,8 +66,9 @@ public enum ImageLoader
 			for (int y = 0; y < image.getHeight(); y++)
 			{
 				pixel = image.getRGB(x, y);
-				sum = pixel+c+1;
-				System.out.println(sum);
+				sum = pixel+c+1; // kp warum das funktioniert.
+				if (((pixel>>24) & 0xff) == 0)
+					sum = 255;
 				image.setRGB(x, y, sum);
 			}
 		}

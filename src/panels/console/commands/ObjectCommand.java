@@ -25,6 +25,7 @@ public abstract class ObjectCommand extends Command
 		commands.add(new ShowObjectStats());
 		commands.add(new ObjectStart());
 		commands.add(new ObjectStop());
+		commands.add(new SetColor());
 	}
 
 	public static ObjectCommand getCommandByText(String text)
