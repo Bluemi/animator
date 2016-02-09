@@ -26,7 +26,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	private Vec3D directionLeft;
 	private Vec3D directionTop;
 	private Vec3D speed;
-	private Vec3D PointOfFocus;
+	private Vec3D pointOfFocus;
 	private String name;
 	private Color color;
 
@@ -48,7 +48,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		defineDirectionLeft();
 		defineDirectionTop();
 		speed = new Vec3D();
-		PointOfFocus = new Vec3D(0,0,0);
+		pointOfFocus = new Vec3D(0,0,0);
 		wPressed = aPressed = sPressed = dPressed = shiftPressed = spacePressed = strgPressed = false;
 	}
 
@@ -112,7 +112,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 
 		if (ePressed)
 		{
-			focusPoint(PointOfFocus);
+			focusPoint(pointOfFocus);
 		}
 	}
 
@@ -192,7 +192,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 		rotateUpDown(new Angle(-mouseMove.getY() * ROTATION_SPEED));
 	}
 
-	private void rotateZ(Angle a)
+	public void rotateZ(Angle a)
 	{
 		directionFront.rotateZ(a);
 		directionFront.normalize();
@@ -253,7 +253,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	{
 		if (point != null)
 		{
-			PointOfFocus.copy(point);
+			pointOfFocus.copy(point);
 		}
 		else
 		{
@@ -264,6 +264,18 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	public void setColor(Color c)
 	{
 		color = c;
+		Debug.test("Color setted");
+	}
+
+	public void setDirectionFront(Vec3D vec)
+	{
+		directionFront.copy(vec);
+		defineDirectionLeftTop();
+	}
+
+	public void setPosition(Vec3D pos)
+	{
+		position.copy(pos);
 	}
 
 	// Getter
@@ -272,6 +284,7 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	public Vec3D getDirectionLeft() { return new Vec3D(directionLeft); }
 	public Vec3D getDirectionTop() { return new Vec3D(directionTop); }
 	public Vec3D getSpeed() { return new Vec3D(speed); }
+	public Vec3D getPointOfFocus() { return pointOfFocus; }
 
 	public Color getColor() { return color; }
 	public boolean hasColor() { return color != null; }
@@ -294,4 +307,6 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 			"Position : " + getPosition()
 		};
 	}
+
+	public boolean isTrue3D() { return false; }
 }

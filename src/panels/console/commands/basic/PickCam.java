@@ -39,5 +39,5 @@ public class PickCam extends BasicCommand
 		console.endl();
 	}
 
-	@Override public String getName() { return "pickCam"; }
+	@Override public String getName() { return "pc"; }
 }

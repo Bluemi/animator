@@ -16,6 +16,7 @@ import misc.Debug;
 import misc.math.Point;
 import misc.math.Vec3D;
 import view.Cam;
+import view.True3DCam;
 
 public class Animator implements MouseMotionListener, KeyListener
 {
@@ -59,9 +60,21 @@ public class Animator implements MouseMotionListener, KeyListener
 
 	public void render()
 	{
-		for (int i = 0; i < getDrawObjects().size(); i++)
+		if (getActiveCam().isTrue3D())
 		{
-			getDrawObjects().get(i).render(getActiveCam());
+			True3DCam t3dcam = (True3DCam) getActiveCam();
+			for (int i = 0; i < getDrawObjects().size(); i++)
+			{
+				getDrawObjects().get(i).render(t3dcam.getRightCam());
+				getDrawObjects().get(i).render(t3dcam.getLeftCam());
+			}
+		}
+		else
+		{
+			for (int i = 0; i < getDrawObjects().size(); i++)
+			{
+				getDrawObjects().get(i).render(getActiveCam());
+			}
 		}
 		if (activePanel != null)
 			activePanel.render();
@@ -103,6 +116,22 @@ public class Animator implements MouseMotionListener, KeyListener
 				break;
 			case KeyEvent.VK_F1:
 				activePanel = panels.get(0);
+				break;
+			case KeyEvent.VK_UP:
+				True3DCam.DIS += 0.6f;
+				Debug.note("DIS = " + True3DCam.DIS);
+				break;
+			case KeyEvent.VK_DOWN:
+				True3DCam.DIS -= 0.6f;
+				Debug.note("DIS = " + True3DCam.DIS);
+				break;
+			case KeyEvent.VK_RIGHT:
+				True3DCam.DIF += 0.01f;
+				Debug.note("DIF = " + True3DCam.DIF);
+				break;
+			case KeyEvent.VK_LEFT:
+				True3DCam.DIF -= 0.01f;
+				Debug.note("DIF = " + True3DCam.DIF);
 				break;
 			default:
 				if (activePanel != null)
@@ -168,6 +197,15 @@ public class Animator implements MouseMotionListener, KeyListener
 	public void setActiveCam(Cam cam)
 	{
 		activeCam = cam;
+	}
+
+	public void addCam(Cam cam, boolean active)
+	{
+		getCams().add(cam);
+		if (active)
+		{
+			setActiveCam(cam);
+		}
 	}
 
 	public LinkedList<DrawObject> getDrawObjects() { return drawObjects; }

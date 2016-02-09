@@ -18,7 +18,7 @@ public class PickObject extends BasicCommand
 				if (object.getName().equals(args[0]))
 				{
 					console.handleObject(object);
-					console.write("handling \"" + object.getName() + "\" now");
+					console.write(TAB + "handling \"" + object.getName() + "\" now");
 					return;
 				}
 			}
@@ -32,10 +32,10 @@ public class PickObject extends BasicCommand
 
 	private void printUsage(Console console)
 	{
-		console.write("usage");
-		console.write(TAB + " pickobject <name>");
+		console.write(TAB + "usage");
+		console.write(TAB + getName() + " <Name>");
 		// console.write("       pickobject <id>"); // noch nicht umgesetzt
 	}
 
-	@Override public String getName() { return "pickobject"; }
+	@Override public String getName() { return "pd"; }
 }
