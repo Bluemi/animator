@@ -1,6 +1,7 @@
 package drawobjects;
 
 import java.util.LinkedList;
+import java.awt.Color;
 
 import drawobjects.DrawObject;
 import misc.Debug;
@@ -67,4 +68,22 @@ public abstract class Container extends DrawObject
 	}
 
 	@Override public String[] getDescription() { return new String[] { "     " + getName() + " (Container):", "     Has " + components.size() + " Components"}; }
+
+	@Override public Color getColor()
+	{
+		int c = 0;
+		for (DrawObject component : getComponents())
+		{
+			c += component.getColor().getRGB();
+		}
+		return new Color(c);
+	}
+
+	@Override public void setColor(Color color)
+	{
+		for (DrawObject component : getComponents())
+		{
+			component.setColor(color);
+		}
+	}
 }

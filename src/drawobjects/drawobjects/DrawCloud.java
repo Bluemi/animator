@@ -21,7 +21,7 @@ public class DrawCloud extends DrawPoint
 	{
 		if (getVisible())
 		{
-			BufferedImage image = ImageLoader.CLOUD_IMAGE.getImage();
+			BufferedImage image = ImageLoader.CLOUD_IMAGE.getImage(getRenderColor(cam));
 			Debug.warnIf(image == null, "DrawCloud.render(): image == null");
 			Point point = from3Dto2D(getPosition(), cam);
 			double m = Vec3D.getFromTo(cam.getPosition(), getPosition()).getMagnitude();

@@ -14,11 +14,13 @@ public class DrawPoint extends DrawObject
 {
 	private Vec3D position;
 	private Image image;
+	private Color color;
 
 	public DrawPoint(String name, Vec3D position)
 	{
 		super(name);
 		this.position = new Vec3D(position);
+		color = Color.WHITE;
 		image = Toolkit.getDefaultToolkit().getImage("res/drawobjects/Pixel.png");
 	}
 
@@ -43,4 +45,7 @@ public class DrawPoint extends DrawObject
 	{
 		return new String[] {"(DrawPoint) \t" + getName(), "Position : \t" + position};
 	}
+
+	@Override public Color getColor() { return color; }
+	@Override public void setColor(Color c) { this.color = c; }
 }

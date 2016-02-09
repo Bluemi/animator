@@ -11,12 +11,14 @@ import view.Cam;
 public class DrawLine extends DrawObject
 {
 	private Vec3D point1, point2;
+	private Color color;
 
 	public DrawLine(String name, Vec3D point1, Vec3D point2)
 	{
 		super(name);
 		this.point1 = point1;
 		this.point2 = point2;
+		color = Color.WHITE;
 	}
 
 	@Override public void render(Cam cam)
@@ -25,7 +27,7 @@ public class DrawLine extends DrawObject
 		{
 			Point pointA = from3Dto2D(point1, cam);
 			Point pointB = from3Dto2D(point2, cam);
-			Screen.g().setColor(Color.WHITE);
+			Screen.g().setColor(getRenderColor(cam));
 			Screen.g().drawLine(pointA.getX(), pointA.getY(), pointB.getX(), pointB.getY());
 		}
 	}
@@ -44,4 +46,7 @@ public class DrawLine extends DrawObject
 		return center;
 	}
 	@Override public String[] getDescription() { return new String[] {"(DrawLine) : \t" + getName(), "Position1 :\t" + point1, "Position2 :\t" + point2}; }
+
+	@Override public void setColor(Color c) { this.color = c; }
+	@Override public Color getColor() { return color; }
 }

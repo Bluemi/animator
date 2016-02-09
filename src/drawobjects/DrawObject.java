@@ -92,13 +92,13 @@ public abstract class DrawObject implements Nameable
 		return degToKoordinates(beta, gamma, cam);
 	}
 
-	protected Color getRenderColor(Cam cam)
+	protected final Color getRenderColor(Cam cam)
 	{
 		if (cam.hasColor())
 		{
-			return cam.getColor();
+			return new Color(cam.getColor().getRGB() + getColor().getRGB());
 		}
-		return Color.WHITE;
+		return getColor();
 	}
 
 	private Point degToKoordinates(double beta, double gamma, Cam cam)
@@ -122,8 +122,10 @@ public abstract class DrawObject implements Nameable
 	protected Vec3D getStartSpeed() { return new Vec3D(); } // Kann von den Unterklassen geändert werden
 	protected Vec3D getStartDrag() { return new Vec3D(0.9, 0.9, 0.9); }
 	protected Vec3D getDrag() { return drag; }
+
 	public abstract String[] getDescription();
 	public abstract Vec3D getCenter();
+	public abstract Color getColor();
 
 	// setter
 	public void setVisible(boolean v) { visible = v; }
@@ -137,4 +139,5 @@ public abstract class DrawObject implements Nameable
 		Debug.warnIf(d == null, "DrawObject.setDrag(): d == null");
 		drag.copy(d);
 	}
+	public abstract void setColor(Color color);
 }

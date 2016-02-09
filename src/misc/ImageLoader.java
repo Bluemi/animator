@@ -1,9 +1,12 @@
 package misc;
 
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
 import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.image.WritableRaster;
+import java.util.HashMap;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 import misc.Debug;
 
@@ -11,29 +14,30 @@ public enum ImageLoader
 {
 	CLOUD_IMAGE("res/drawobjects/cloud.png");
 
-	private boolean loaded = false;
 	private String path;
-	private BufferedImage image;
+	private HashMap<Color, BufferedImage> images;
 
 	ImageLoader(String path)
 	{
 		this.path = path;
+		images = new HashMap<Color, BufferedImage>();
 	}
 
-	public void load()
+	public void load(Color color)
 	{
 		File f = new File(path);
 		if (f.isFile())
 		{
 			try
 			{
-				image = ImageIO.read(f);
-				loaded = true;
-				Debug.note("ImageLoader.load(): loaded new Image : " + f, Debug.Tags.IMAGE_LOADER);
+				BufferedImage image = ImageIO.read(f);
+				image = getColoredImage(image, color); // Färbt das Image
+				images.put(color, image);
+				Debug.note("ImageLoader.load(): loaded new Image : " + f + " with Color " + color, Debug.Tags.IMAGE_LOADER);
 			}
 			catch (Exception e)
 			{
-				Debug.warn("ImageLoader.load(): Failed to load Image");
+				Debug.warn("ImageLoader.load(): Failed to load Image " + f);
 			}
 		}
 		else
@@ -42,21 +46,40 @@ public enum ImageLoader
 		}
 	}
 
-	public BufferedImage getImage()
+	public BufferedImage getImage(Color color)
 	{
-		if (!isLoaded())
+		if (!isLoaded(color))
 		{
-			load();
+			load(color);
 		}
-		Debug.warnIf(image == null, "ImageLoader.getImage(): image == null");
+		return images.get(color);
+	}
+
+	public static BufferedImage getColoredImage(BufferedImage img, Color color)
+	{
+		BufferedImage image = copyImage(img);
+		int pixel;
+		int c = color.getRGB();
+		int sum;
+		for (int x = 0; x < image.getWidth(); x++)
+		{
+			for (int y = 0; y < image.getHeight(); y++)
+			{
+				pixel = image.getRGB(x, y);
+				sum = pixel+c+1;
+				System.out.println(sum);
+				image.setRGB(x, y, sum);
+			}
+		}
 		return image;
 	}
 
+/*
 	public BufferedImage getImageCopy()
 	{
 		return copyImage(getImage());
 	}
-
+*/
 	public static BufferedImage copyImage(BufferedImage source)
 	{
 		BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
@@ -66,5 +89,8 @@ public enum ImageLoader
 		return b;
 	}
 
-	public boolean isLoaded() { return loaded; }
+	public boolean isLoaded(Color color)
+	{
+		return images.containsKey(color);
+	}
 }
