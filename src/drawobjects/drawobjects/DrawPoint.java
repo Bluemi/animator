@@ -3,17 +3,18 @@ package drawobjects.drawobjects;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 
 import core.Screen;
 import drawobjects.DrawObject;
 import misc.math.Vec3D;
 import misc.math.Point;
+import misc.ImageLoader;
 import view.Cam;
 
 public class DrawPoint extends DrawObject
 {
 	private Vec3D position;
-	private Image image;
 	private Color color;
 
 	public DrawPoint(String name, Vec3D position)
@@ -21,7 +22,6 @@ public class DrawPoint extends DrawObject
 		super(name);
 		this.position = new Vec3D(position);
 		color = Color.WHITE;
-		image = Toolkit.getDefaultToolkit().getImage("res/drawobjects/Pixel.png");
 	}
 
 	@Override public void render(Cam cam)
@@ -29,6 +29,7 @@ public class DrawPoint extends DrawObject
 		if (getVisible())
 		{
 			Point point = from3Dto2D(position, cam);
+			BufferedImage image = ImageLoader.PIXEL_IMAGE.getImage(getRenderColor(cam));
 			Screen.g().drawImage(image, point.getX(), point.getY(), null);
 		}
 	}

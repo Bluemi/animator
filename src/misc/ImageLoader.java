@@ -12,7 +12,8 @@ import misc.Debug;
 
 public enum ImageLoader
 {
-	CLOUD_IMAGE("res/drawobjects/cloud.png");
+	CLOUD_IMAGE("res/drawobjects/cloud.png"),
+	PIXEL_IMAGE("res/drawobjects/pixel.png");
 
 	private String path;
 	private HashMap<Color, BufferedImage> images;
@@ -55,7 +56,7 @@ public enum ImageLoader
 		return images.get(color);
 	}
 
-	public static BufferedImage getColoredImage(BufferedImage img, Color color)
+	private static BufferedImage getColoredImage(BufferedImage img, Color color)
 	{
 		BufferedImage image = copyImage(img);
 		int pixel;
@@ -75,12 +76,6 @@ public enum ImageLoader
 		return image;
 	}
 
-/*
-	public BufferedImage getImageCopy()
-	{
-		return copyImage(getImage());
-	}
-*/
 	public static BufferedImage copyImage(BufferedImage source)
 	{
 		BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
