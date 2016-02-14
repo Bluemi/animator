@@ -264,7 +264,6 @@ public class Cam implements KeyListener, PointMouseMotionListener, Nameable
 	public void setColor(Color c)
 	{
 		color = c;
-		Debug.test("Color setted");
 	}
 
 	public void setDirectionFront(Vec3D vec)

@@ -45,7 +45,7 @@ public class Debug
 	{
 		CAM_KEYS(false),
 		EXTENDED_WARNINGS(false),
-		IMAGE_LOADER(true);
+		IMAGE_LOADER(false);
 
 		private boolean active;
 
