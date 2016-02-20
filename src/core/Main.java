@@ -17,7 +17,7 @@ import panels.console.Command;
 
 public class Main
 {
-	public static final int FRAME_INTERVAL = 35; // intervall in dem tick() und render() ausgeführt werden
+	public static final int FRAME_INTERVAL = 50; // intervall in dem tick() und render() ausgeführt werden
 
 	private Animator animator;
 

@@ -1,7 +1,7 @@
 package drawobjects.containers;
 
 import drawobjects.Container;
-import drawobjects.drawobjects.DrawCloud;
+import drawobjects.drawobjects.TwinklingDrawCloud;
 import misc.math.Vec3D;
 import misc.Randomizer;
 
@@ -46,7 +46,7 @@ public class GlobeCreator extends Container
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			DrawCloud cloud = new DrawCloud("c" + getComponents().size(), new Vec3D(position));
+			TwinklingDrawCloud cloud = new TwinklingDrawCloud("c" + getComponents().size(), new Vec3D(position));
 			double x = Randomizer.getDoubleBetween(-SPREAD, SPREAD);
 			double y = Randomizer.getDoubleBetween(-SPREAD, SPREAD);;
 			double z = Randomizer.getDoubleBetween(-SPREAD, SPREAD);;
